@@ -1,0 +1,38 @@
+.loginForm {
+    min-width: 150px;
+    max-width: 1200px;
+    width: 100%;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+.formContainer{
+    border: 1px solid #FA6666;
+    padding: 3%;
+    border-radius: 20px;
+}
+
+.redButton{
+    margin-top: 3%;
+    background-color: #C24444;
+    color:#FFF;
+    width: 15%;
+}
+
+.alertContainer{
+    margin-top:2%;
+}
+
+.toastContainer{
+    position:absolute;
+    top:0;
+    right: 2%;
+}
+
+.form-control:focus{
+    border:none;
+    box-shadow: inset 0 1px 1px rgba(216, 18, 18, 0.233), 0 0 8px rgba(199, 27, 27, 0.993);    
+    outline: 0 none;
+}

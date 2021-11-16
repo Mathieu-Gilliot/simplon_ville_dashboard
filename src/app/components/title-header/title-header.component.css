@@ -1,0 +1,15 @@
+.lettrine{
+    color:#F20F0F;
+    text-transform: uppercase;
+    font-size:12vh;
+}
+
+.header-title{
+    font-family: "Ubuntu";
+    text-align: center;
+    font-size: 10vh;
+}
+
+.h1{
+    font-weight: 100;
+}

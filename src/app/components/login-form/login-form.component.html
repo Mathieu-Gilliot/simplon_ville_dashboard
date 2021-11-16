@@ -1,1 +1,20 @@
-<p>login-form works!</p>
+<div class="toastContainer" *ngIf="toastIsVisible">
+<ngbd-toast-customheader [svgPath]="thumbsDownPath" [header]="errorHeader" [message]="loginErrorMessage" [backGroundColor]="toastBackGroundColor" [show]="toastIsVisible" (hidden)="setToastIsVisible($event)"></ngbd-toast-customheader>
+</div>
+<div class="container formContainer">
+    <form  class="loginForm" #form="ngForm" (ngSubmit)="onFormPost(form)" >
+        <div class="form-floating mb-3">
+            <input type="email" ngModel #email="ngModel" required class="emailInput form-control" name="email" placeholder="Your email adress" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+            <label for="email">Email</label>
+            <div class="alertContainer" *ngIf="email.errors && email.errors.pattern">
+                <ngb-alert [type]="alertTypeDanger" [dismissible]="alertNotDismissible" >{{ emailPatternErrorMessage }}</ngb-alert>
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" ngModel #password="ngModel"  class="passwordInput form-control" name="password" placeholder="Your password">
+            <label for="password">Password</label>
+        </div>
+        <button mat-raised-button class="redButton" onclick="">Login</button>
+    </form>
+</div>
+

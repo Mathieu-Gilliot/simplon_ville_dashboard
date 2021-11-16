@@ -1,0 +1,9 @@
+<ngb-toast *ngIf="show" [autohide]="false" (hidden)="show=false;onHidden()" style.background-color="{{backGroundColor}}">
+    <ng-template ngbToastHeader>
+      <img src="{{picturePath}}" alt="">
+      {{header}}
+    </ng-template>
+   {{message}}
+  </ngb-toast>
+
+  
