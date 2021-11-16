@@ -2,7 +2,7 @@
 
 export class apiEndPoints{
 
-    static baseUrl="http//localhost:3000/"
+    static baseUrl="http://localhost:8080/"
 
     static userLogin:string = apiEndPoints.baseUrl + "auth/login"
 }
