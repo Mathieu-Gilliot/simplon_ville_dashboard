@@ -1,1 +1,74 @@
-<p>alert-list-page works!</p>
+
+<div #sideBar #collapse="ngbCollapse" class="stickySideBar" [(ngbCollapse)]="!isCollapsed" animation=true>
+  <div class="customNavBar">
+    <button class="btn btn-secondary btn-sm btn-circle" (click)="close()">X</button>
+    <div class="">
+      <div class="pictureContainer"><img src="{{currentAlert.picture}}" alt=""></div>
+      <div class="sideNavBarBody">
+        <div class="h3">Alerte</div>
+        <div class="blockLine"><div class="h6">Cause :</div><p> {{currentAlert.cause}}</p></div>
+        <div class="blockLine"><div class="h6">Localisation :</div><p> {{currentAlert.location}}</p></div>
+        <div class="blockLine"><div class="h6">Date :</div><p> {{currentAlert.date}}</p></div>
+        <div class="blockLine"><div class="h6">Heure :</div><p> {{currentAlert.time}}</p></div>
+        <div class="blockLine"><div class="h6">Description :</div><p> {{currentAlert.description}}</p></div>
+        <div class="blockLine"><div class="h6">Date de rapport :</div><p> {{currentAlert.createdAt}}</p></div>
+        <div class="blockLine"><div class="h6">Date de mise à jour :</div><p> {{currentAlert.updatedAt}}</p></div>
+        <div class="blockLine"><div class="h6">Mis à jour par :</div><p> {{currentAlert.updatedBy}}</p></div>
+        <div class="blockLine">
+          <div #switch class="form-check form-switch">
+            <input  class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked *ngIf="currentAlert.fix">
+            <input  class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" *ngIf="!currentAlert.fix" >
+            <label class="form-check-label" for="flexSwitchCheckDefault">Alerte résolue?</label>
+          </div>
+          <button class="btn btn-secondary btn-sm" (click)="getSwitch(switch,currentAlert)">Mettre à jour</button>
+        </div>
+      
+        <div class="h3">Rapporteur</div>
+        <div class="blockLine"><div class="h6">Prénom :</div><p> {{currentAlert.firstname}}</p></div>
+        <div class="blockLine"><div class="h6">Nom :</div><p> {{currentAlert.name}}</p></div>
+        <div class="blockLine"><div class="h6">Adress :</div><p> {{currentAlert.userAdress}}</p></div>
+        <div class="blockLine"><div class="h6">CodePostal :</div><p> {{currentAlert.userZipcode}}</p></div>
+        <div class="blockLine"><div class="h6">Ville :</div><p>  {{currentAlert.city}}</p></div>
+        <div class="blockLine"><div class="h6">Téléphone :</div><p>  {{currentAlert.phoneNumber}}</p></div>   
+      </div>     
+    </div>
+  </div>
+</div>
+<app-title-header>
+</app-title-header>
+<div class="tableContainer">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Type</th>
+      <th scope="col">Adresse</th>
+      <th scope="col">Date</th>
+      <th scope="col">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let alerte of alertes" (click)="open(sideBar,alerte)">
+      <th scope="row">{{ alerte.id }}</th>
+      <td>
+        {{alerte.cause}}
+      </td>
+      <td>{{ alerte.location}}</td>
+      <td>{{ alerte.date }}</td>
+      <td *ngIf="alerte.fix">Résolue</td>
+      <td *ngIf="!alerte.fix">En attente</td>
+    </tr>
+    </tbody>
+  </table>
+  
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshAlertes()">
+    </ngb-pagination>
+  
+    <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshAlertes()">
+      <option [ngValue]="10">10 alertes par page</option>
+      <option [ngValue]="25">25 alertes par page</option>
+      <option [ngValue]="50">50 alertes par page</option>
+    </select>
+</div>
+</div>

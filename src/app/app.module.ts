@@ -14,7 +14,10 @@ import {CommonModule} from '@angular/common';
 import { UserService } from './services/UserService';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertListPageComponent } from './pages/alert-list-page/alert-list-page.component';
-
+import {MatSidenavModule} from '@angular/material/sidenav'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { AlertListPageComponent } from './pages/alert-list-page/alert-list-page.
     LoginFormComponent,
     TitleHeaderComponent,
     NgbdToastCustomheaderComponent,
-    AlertListPageComponent
+    AlertListPageComponent,
+    SidebarComponent
+
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,10 @@ import { AlertListPageComponent } from './pages/alert-list-page/alert-list-page.
     MatButtonModule,
     FormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule
 
   ],
   providers: [

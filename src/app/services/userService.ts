@@ -14,13 +14,7 @@ export class UserService{
     }
 
     login(form:Login):Observable<any>{
-        const options = {
-            mode: "cors",
-            headers : {
-              'Content-type':'application/json; charset=UTF-8'
-            }
-        }
-        return this.http.post(apiEndPoints.userLogin,form,options);
+        return this.http.post(apiEndPoints.userLogin,form);
        
     }
 

@@ -1,0 +1,71 @@
+.customNavBar{
+    position: sticky;
+    top:0;
+    left:0;
+
+}
+
+.stickySideBar{
+    position: absolute;
+    width: 20%;
+    box-shadow:15px -1px 34px 1px rgba(0,0,0,0.48);
+}
+
+.tableContainer{
+    width: 50%;
+    margin:auto;
+}
+.btn-circle {
+    --side-mesure:2em;
+    position: absolute;
+    width: var(--side-mesure);
+    height: var(--side-mesure);
+    top:1%;
+    left:89%;
+    z-index: 1;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.664);
+    text-align: center;
+    font-weight: bold;
+    color:dimgrey
+}
+.btn-circle:hover{
+    background-color:#FFF;
+}
+td:hover{
+    cursor:pointer;
+}
+
+.pictureContainer{
+    position: relative;
+    height: 30vh;
+    background-color: dimgrey;
+}
+
+.sideNavBarBody{
+    padding: 2%;
+}
+
+.blockLine{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 10%;
+    margin-top: 1% ;
+}
+.blockLine p{
+    word-break: break-all;
+    margin-left: 1%;
+    flex: 0.8;
+    text-align: end;
+}
+.blockLine .h6{
+    flex: 1;
+}
+.form-check-input:checked{
+    background-color: #F20F0F;
+    border:white;
+}
+.form-check-input:focus{
+    box-shadow: 0 0 0 1px rgba(88, 87, 87, 0.452), 0 0 0 0.2rem rgba(255, 4, 4, 0.315)
+}
