@@ -15,27 +15,18 @@ export class UserService{
 
     login(form:Login):Observable<any>{
         const options = {
-            mode: "cors",
+          mode:'cors',
             headers : {
-              'Content-type':'application/json; charset=UTF-8'
+              'Access-Control-Request-Headers':  'Content-Type',
+              'Content-type':'application/json; charset=UTF-8',
+              'Access-Control-Request-Method': '*',
+              'Access-Control-Allow-Origin': '*'
             }
         }
         return this.http.post(apiEndPoints.userLogin,form,options);
        
     }
 
-    private errorHandler(err : Response){
-     
-        if(err.status === 404 ){
-          return throwError('ooijoi')
-        }else if(err.status === 400){
-          return throwError('oijfoijfzoz')
-        }else if(err.status === 429){
-          return throwError('gfjpiojgpoijgep')
-        }else{
-          return throwError('jopjgoeijgoeg')
-        }
   
-      }
 
 }
