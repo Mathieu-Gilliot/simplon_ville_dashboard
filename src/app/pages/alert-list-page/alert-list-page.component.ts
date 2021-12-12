@@ -1,734 +1,210 @@
 import { Component, OnInit } from '@angular/core';
-import { fullAlert} from '../../Interfaces/alertInterface'
+import { Router, RouterLink } from '@angular/router';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { AlertService } from 'src/app/services/AlertService';
+import { fullAlert } from '../../Interfaces/alertInterface'
 
 
-const Alertes: fullAlert[] = [
-  {
-    id:1,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:true,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:2,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:3,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:4,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:5,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:6,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:7,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:8,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:9,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:10,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:11,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:12,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:13,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:14,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:15,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:16,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:17,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:18,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:19,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:20,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:21,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:22,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:23,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:24,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:25,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:26,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:27,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:28,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:29,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:30,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Auboisdormant",
-    firstname:"Abel",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:31,
-    cause:"Voirie",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Skacélagueul",
-    firstname:"Eva",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:32,
-    cause:"Accident de la route",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Prochain",
-    firstname:"Edmond",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:33,
-    cause:"Animal perdu",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Evitable",
-    firstname:"Céline",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  {
-    id:34,
-    cause:"Travaux",
-    location:"123 rue des licornes",
-    date:"21/12/12",
-    fix:false,
-    description:"oizfoizjfozijfoinvoniuozehnvznviouznviozvnziovunzionviozun",
-    picture:"ozfjozjifozjfozij",
-    time:"10h15",
-    name:"Raton",
-    firstname:"Candy",
-    userAdress:"4512 avenue des faubourgs",
-    userZipcode:"78455",
-    city:"RainbowCity",
-    createdAt:"25/11/12",
-    updatedAt:"",
-    updatedBy:"",
-    phoneNumber:"0546784565"
-  },
-  
-  
-];
+
 @Component({
   selector: 'app-alert-list-page',
   templateUrl: './alert-list-page.component.html',
-  styleUrls: ['./alert-list-page.component.css']
+  styleUrls: ['./alert-list-page.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class AlertListPageComponent implements OnInit {
 
   page = 1;
   pageSize = 10;
-  collectionSize = Alertes.length;
+  collectionSize!: number;
   alertes!: fullAlert[];
+  alertesFromServer!: fullAlert[];
   public isCollapsed = false;
-  currentAlert : fullAlert={
-    id:undefined,
-    cause:"",
-    description:"",
-    date:"",
-    time:"",
-    location:"",
-    picture:"",
-    name:"",
-    firstname:"",
-    userAdress:"",
-    userZipcode:"",
-    city:"",
-    phoneNumber:"",
-    fix:false,
-    createdAt:"",
-    updatedAt:"",
-    updatedBy:""
+  currentAlert: fullAlert = {
+    id: undefined,
+    cause: "",
+    description: "",
+    date: "",
+    time: "",
+    location: "",
+    picture: "",
+    name: "",
+    firstname: "",
+    userAdress: "",
+    userZipcode: "",
+    city: "",
+    phoneNumber: "",
+    fix: false,
+    createdAt: "",
+    updatedAt: "",
+    updatedBy: ""
   };
 
-  constructor() {
-    this.refreshAlertes();
-   }
-   
-   refreshAlertes() {
-    this.alertes = Alertes
-      .map((alerte, i) => ({id: i + 1, ...alerte}))
+  alertToDelete: fullAlert = {
+    id: undefined,
+    cause: "",
+    description: "",
+    date: "",
+    time: "",
+    location: "",
+    picture: "",
+    name: "",
+    firstname: "",
+    userAdress: "",
+    userZipcode: "",
+    city: "",
+    phoneNumber: "",
+    fix: false,
+    createdAt: "",
+    updatedAt: "",
+    updatedBy: ""
+  };
+
+  toastIsVisible: boolean = false;
+  toastBackGroundColor!: string;
+  message!: string;
+  svgPath!: string;
+  header!: string;
+
+  modalIsVisible:boolean = false;
+
+  constructor(private router: Router, private alertService: AlertService,config: NgbModalConfig, private modalService: NgbModal) {
+    if (sessionStorage.getItem('token') == null) {
+      this.router.navigate(['/unauthorized'])
+    }
+    this.alertService.getAllAlert().subscribe({
+      next: (response) => {
+        this.alertesFromServer = response;
+        this.collectionSize = this.alertesFromServer.length;
+      },
+      error: error => {
+        if (error.status == 401) {
+          this.router.navigate(['/unauthorized'])
+        }
+
+      },
+      complete: () => {
+
+      }
+    })
+    config.backdrop = 'static';
+    config.keyboard = false;
+
+  }
+
+  refreshAlertes() {
+    this.alertesFromServer = this.alertesFromServer
+      .map((alerte, i) => ({ id: i + 1, ...alerte }))
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
   }
 
   ngOnInit(): void {
-    window.addEventListener("scroll",(e)=>{
-      console.log(window)
-    })
+
   }
- 
 
 
-  open(htmlElement:HTMLElement,alert:fullAlert){
+
+  open(htmlElement: HTMLElement, alert: fullAlert) {
 
     this.setCurrentAlert(alert);
-    if(!this.isCollapsed){
+    if (!this.isCollapsed) {
       this.isCollapsed = true;
       htmlElement.animate([
         {
-        opacity:0,
-        marginLeft:"-100%"
+          opacity: 0,
+          marginLeft: "-100%"
+        },
+        {
+          opacity: 1,
+          marginLeft: "0"
+        }], 900)
+    }
+  }
+
+  close() {
+    this.isCollapsed = false;
+  }
+
+  setCurrentAlert(alert: fullAlert) {
+    this.currentAlert = alert;
+  }
+
+  getSwitch(htmlInput: HTMLDivElement, alert: fullAlert) {
+    alert.fix = htmlInput.getElementsByTagName('input')[0].checked;
+    this.alertService.fixAlertUpdate(alert).subscribe({
+      next: (response) => {
+        this.header = "SUCCESS";
+        this.toastBackGroundColor = "#56b03e";
+        this.svgPath = "./assets/thumbs-up.svg";
+        this.message = "This alert has been successfuly updated";
+        this.toastIsVisible = true;
+        setTimeout(() => {
+          this.toastIsVisible = false;
+        }, 2000)
       },
-    {
-      opacity:1,
-      marginLeft: "0"
-    }],900)
-    }
-    }
+      error: error => {
+        this.header = "Something went wrong...";
+        this.toastBackGroundColor = "#F5C2C7";
+        this.svgPath = "./assets/thumbs-down.svg";
+        this.message = "This alert could'nt be updated";
+        this.toastIsVisible = true;
+      },
+      complete: () => {
 
-    close(){
-      this.isCollapsed = false;
-    }
+      }
+    })
+  }
 
-    setCurrentAlert(alert:fullAlert){
-      this.currentAlert = alert;
-    }
+  logOut() {
+    sessionStorage.removeItem('token');
+    this.router.navigate(["/"]);
+  }
 
-    getSwitch(htmlInput:HTMLDivElement,alert:fullAlert){
-        console.log(htmlInput.getElementsByTagName('input')[0].checked)
-        console.log(alert.id)
-    }
+  setToastIsVisible(status: boolean) {
+    this.toastIsVisible = status;
+  }
+
+  openModal(content: any,alert:fullAlert) {
+    this.alertToDelete = alert;
+    this.modalService.open(content);
+  }
+  
+  deleteAlerte() {
+    
+    this.alertService.deleteAlert(this.alertToDelete).subscribe({
+      next: (response) => {
+        this.header = "SUCCESS";
+        this.toastBackGroundColor = "#56b03e";
+        this.svgPath = "./assets/thumbs-up.svg";
+        this.message = "This alert has been successfuly deleted";
+        this.toastIsVisible = true;
+        setTimeout(() => {
+          this.toastIsVisible = false;
+        }, 2000)
+      },
+      error: error => {
+        if(error.status == 200){
+          this.header = "SUCCESS";
+          this.toastBackGroundColor = "#56b03e";
+          this.svgPath = "./assets/thumbs-up.svg";
+          this.message = "This alert has been successfuly deleted";
+          this.toastIsVisible = true;
+          setTimeout(() => {
+            this.toastIsVisible = false;
+          }, 2000)
+        }else{
+          this.header = "Something went wrong...";
+          this.toastBackGroundColor = "#F5C2C7";
+          this.svgPath = "./assets/thumbs-down.svg";
+          this.message = "This alert could'nt be deleted";
+          this.toastIsVisible = true;
+        }
+        this.refreshAlertes();
+        
+      },
+      complete: () => {
+
+      }
+    })
+  }
 }

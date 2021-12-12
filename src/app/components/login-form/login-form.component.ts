@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from 'src/app/services/UserService';
 
 @Component({
@@ -9,7 +10,10 @@ import { UserService } from 'src/app/services/UserService';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private userService: UserService) { 
+  constructor(private userService: UserService, private router:Router) { 
+    if(sessionStorage.getItem("token")!=null){
+      this.router.navigate(["/list"]);
+    }
     this.thumbsDownPath  = "./assets/thumbs-down.svg";
     this.errorHeader = "An error has occured";
     this.emailPatternErrorMessage = "Email field must contain a valid email";
@@ -17,7 +21,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this)
+    
   }
 
   public thumbsDownPath :string ;
@@ -33,18 +37,18 @@ export class LoginFormComponent implements OnInit {
     if(form.status == "VALID"){
       this.userService.login(form.form.value).subscribe({
         next:(response:any)=>{
-          console.log(response)
+          sessionStorage.setItem("token",response.accessToken)
+          this.router.navigate(["/list"])
         },
         error: error=>{
+          if(error.status == 400 || error.status == 401){
+            this.loginErrorMessage = "Wrong or missing credentials, check your email/password"
+          }else if (error.status == 500){
+            this.loginErrorMessage = "Internal server error"
+          }
           this.toastIsVisible = true;
           this.toastBackGroundColor = "#F5C2C7"
-          if(error.originalError.status == 500){
-            this.loginErrorMessage = "Internal server error"
-          }else if(error.originalError.status == 401){
-            this.loginErrorMessage = "Wrong credentials"
-          }else if(error.originalError.status == 404){
-            console.log(error)
-          }
+         
         },
         complete:()=>{
 

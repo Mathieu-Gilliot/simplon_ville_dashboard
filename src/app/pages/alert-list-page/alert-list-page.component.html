@@ -1,5 +1,8 @@
-
-<div #sideBar #collapse="ngbCollapse" class="stickySideBar" [(ngbCollapse)]="!isCollapsed" animation=true>
+<button class="exitButton" (click)="logOut()"><img src="../../../assets/sign-out-alt-solid.svg" alt=""></button>
+<div class="toastContainer" *ngIf="toastIsVisible">
+  <ngbd-toast-customheader [svgPath]="svgPath" [header]="header" [message]="message" [backGroundColor]="toastBackGroundColor" [show]="toastIsVisible" (hidden)="setToastIsVisible($event)"></ngbd-toast-customheader>
+  </div>
+  <div #sideBar #collapse="ngbCollapse" class="stickySideBar" [(ngbCollapse)]="!isCollapsed" animation=true>
   <div class="customNavBar">
     <button class="btn btn-secondary btn-sm btn-circle" (click)="close()">X</button>
     <div class="">
@@ -45,22 +48,23 @@
       <th scope="col">Adresse</th>
       <th scope="col">Date</th>
       <th scope="col">Status</th>
+      <th scope="col">Supprimer</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let alerte of alertes" (click)="open(sideBar,alerte)">
-      <th scope="row">{{ alerte.id }}</th>
-      <td>
+    <tr *ngFor="let alerte of alertesFromServer" >
+      <th scope="row" (click)="open(sideBar,alerte)">{{ alerte.id }}</th>
+      <td (click)="open(sideBar,alerte)">
         {{alerte.cause}}
       </td>
-      <td>{{ alerte.location}}</td>
-      <td>{{ alerte.date }}</td>
-      <td *ngIf="alerte.fix">Résolue</td>
-      <td *ngIf="!alerte.fix">En attente</td>
+      <td (click)="open(sideBar,alerte)">{{ alerte.location}}</td>
+      <td (click)="open(sideBar,alerte)">{{ alerte.date }}</td>
+      <td *ngIf="alerte.fix" (click)="open(sideBar,alerte)">Résolue</td>
+      <td *ngIf="!alerte.fix" (click)="open(sideBar,alerte)">En attente</td>
+      <td><button class="btn btn-danger" (click)="openModal(content,alerte)"><img src="../../../assets/trash.svg" title="Supprimer l'alerte"></button></td>
     </tr>
     </tbody>
   </table>
-  
   <div class="d-flex justify-content-between p-2">
     <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshAlertes()">
     </ngb-pagination>
@@ -71,4 +75,20 @@
       <option [ngValue]="50">50 alertes par page</option>
     </select>
 </div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Supression d'alerte</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Êtes vous sûr de vouloir supprimer cette alerte ? </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Non</button>
+    <button type="button" class="btn btn-danger" (click)="deleteAlerte();c('Save click')">Oui</button>
+  </div>
+</ng-template>
 </div>
+

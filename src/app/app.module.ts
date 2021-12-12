@@ -18,6 +18,10 @@ import {MatSidenavModule} from '@angular/material/sidenav'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { AppRoutingModule } from './app-routing-module';
+import { UnauthorizedPageComponent } from './pages/unauthorized-page/unauthorized-page.component';
+import { AlertService } from './services/AlertService';
+import { DeletionModalComponent } from './deletion-modal/deletion-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,10 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     TitleHeaderComponent,
     NgbdToastCustomheaderComponent,
     AlertListPageComponent,
-    SidebarComponent
+    SidebarComponent,
+    UnauthorizedPageComponent,
+    DeletionModalComponent
+    
 
   ],
   imports: [
@@ -42,11 +49,13 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     HttpClientModule,
     MatSidenavModule,
     BrowserAnimationsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    AppRoutingModule
 
   ],
   providers: [
-    UserService
+    UserService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })
