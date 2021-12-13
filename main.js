@@ -13,11 +13,19 @@ const {app, BrowserWindow} = require('electron')
         }
       })
 
-      mainWindow.loadFile(
+      /*mainWindow.loadFile(
         "dist/SimplonVilleDashboard/index.html"   
       );
       // Open the DevTools.
-      mainWindow.webContents.openDevTools()
+      mainWindow.webContents.openDevTools()*/
+
+      mainWindow.loadURL(
+        url.format({
+          pathname: path.join(__dirname, `/dist/SimplonVilleDashboard/index.html`),
+          protocol: "file:",
+          slashes: true
+        })
+      );
 
       mainWindow.on('closed', function () {
         mainWindow = null
