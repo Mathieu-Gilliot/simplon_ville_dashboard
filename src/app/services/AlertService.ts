@@ -13,7 +13,7 @@ export class AlertService{
     }
 
     getAllAlert():Observable<any>{
-        const token = localStorage.getItem('token')
+        const token = sessionStorage.getItem('token')
         const options = {
             mode:'no-cors',
               headers : {
@@ -24,7 +24,7 @@ export class AlertService{
     }
 
     fixAlertUpdate(alert:fullAlert):Observable<any>{
-        const token = localStorage.getItem('token')
+        const token = sessionStorage.getItem('token')
         const options = {
             mode:'no-cors',
               headers : {
@@ -35,7 +35,7 @@ export class AlertService{
     }
 
     deleteAlert(alert:fullAlert):Observable<any>{
-        const token = localStorage.getItem('token')
+        const token = sessionStorage.getItem('token')
         const options = {
             mode:'no-cors',
               headers : {
