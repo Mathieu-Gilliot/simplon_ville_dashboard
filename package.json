@@ -2,6 +2,10 @@
   "name": "simplon-ville-dashboard",
   "version": "0.0.0",
   "main": "main.js",
+  "description": "Application Dashboard simplon Ville",
+  "author": {
+    "name": "Simplon"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,12 +13,11 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "start:electron": "ng build --base-href ./ && electron .",
-    "package:win": "npm run build && cross-var electron-packager ./dist/SimplonVilleDashboard $npm_package_name-$npm_package_version --out=packages --platform=win32 --arch=all --overwrite ",
-  "package:linux": "npm run build && cross-var electron-packager ./ $npm_package_name-$npm_package_version --out=packages --platform=linux --arch=all --overwrite ",
-  "package:osx": "npm run build && cross-var electron-packager dist/SimplonVilleDashboard $npm_package_name-$npm_package_version --out=packages --platform=darwin --arch=all --overwrite ",
-  "package:all": "npm run build && cross-var electron-packager ./ $npm_package_name-$npm_package_version --out=packages --all --arch=all --overwrite "
+    "build-electron": "ng build --base-href . && copy src\\electron\\* dist",
+    "electron": "npm run build-electron && electron dist",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
-  
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.0.1",
@@ -43,6 +46,7 @@
     "@types/node": "^12.11.1",
     "cross-var": "^1.1.0",
     "electron": "^16.0.4",
+    "electron-builder": "^22.14.5",
     "electron-packager": "^15.4.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
